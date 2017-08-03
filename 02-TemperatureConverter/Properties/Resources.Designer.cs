@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace _02_TemperatureConverter.Properties
+namespace TemperatureConverter.Properties
 {
 
 
@@ -44,7 +44,7 @@ namespace _02_TemperatureConverter.Properties
          {
             if ((resourceMan == null))
             {
-               global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("_02_TemperatureConverter.Properties.Resources", typeof(Resources).Assembly);
+               global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TemperatureConverter.Properties.Resources", typeof(Resources).Assembly);
                resourceMan = temp;
             }
             return resourceMan;
