@@ -7,7 +7,7 @@
     <ProjectGuid>{56178DAB-6C96-448D-9E62-88DD933CF7BC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_02_TemperatureConverter</RootNamespace>
+    <RootNamespace>TemperatureConverter</RootNamespace>
     <AssemblyName>02-TemperatureConverter</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -63,6 +63,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Commands\Command.cs" />
     <Compile Include="Models\Temperature.cs" />
     <Compile Include="ModelViews\WindowTempModelView.cs" />
     <Compile Include="Views\WindowTemperature.xaml.cs">
