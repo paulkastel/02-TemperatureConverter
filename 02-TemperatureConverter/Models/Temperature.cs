@@ -108,5 +108,36 @@ namespace TemperatureConverter.Models
 			Celsius = Math.Round((temp - 273.15), 3);
 			Fahrenheit = Math.Round((((Celsius + 40) * 1.8) - 40), 3);
 		}
+
+		/// <summary>
+		/// Shows phenomenon description on passed temperature
+		/// </summary>
+		/// <param name="tempInK">temperature in kelvins</param>
+		/// <returns>description of phenomenon</returns>
+		public string WhatPhenomenon(double tempInK)
+		{
+			var temp = (int)tempInK;
+			switch(temp)
+			{
+				case 0:
+					return Properties.Resources.strAbsoluteZero;
+				case 254:
+				case 255:
+					return Properties.Resources.strFarenheitZero;
+				case 273:
+					return Properties.Resources.strFrozenWater;
+				case 309:
+				case 310:
+					return Properties.Resources.strAvgBodyTemperature;
+				case 373:
+					return Properties.Resources.strBoilingWater;
+				case 1941:
+					return Properties.Resources.strTitanMelting;
+				case 5800:
+					return Properties.Resources.strSunTemperature;
+				default:
+					return string.Empty;
+			}
+		}
 	}
 }

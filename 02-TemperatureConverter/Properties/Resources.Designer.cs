@@ -59,5 +59,113 @@ namespace TemperatureConverter.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Przekroczono zero bezwzględne.
+        /// </summary>
+        internal static string errAbsoluteZero {
+            get {
+                return ResourceManager.GetString("errAbsoluteZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nie można przeliczyć podanej wartości.
+        /// </summary>
+        internal static string errInvalidInput {
+            get {
+                return ResourceManager.GetString("errInvalidInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Przeliczyłeś temperaturę z Celsjusza.
+        /// </summary>
+        internal static string infoCelsiusCounted {
+            get {
+                return ResourceManager.GetString("infoCelsiusCounted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Przeliczyłeś temperaturę z Farenheita.
+        /// </summary>
+        internal static string infoFarenheitCounted {
+            get {
+                return ResourceManager.GetString("infoFarenheitCounted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Przeliczyłeś temperaturę z Kelvina.
+        /// </summary>
+        internal static string infoKelvinCounted {
+            get {
+                return ResourceManager.GetString("infoKelvinCounted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zero bezwzględne.
+        /// </summary>
+        internal static string strAbsoluteZero {
+            get {
+                return ResourceManager.GetString("strAbsoluteZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Średnia temperature ciała człowieka.
+        /// </summary>
+        internal static string strAvgBodyTemperature {
+            get {
+                return ResourceManager.GetString("strAvgBodyTemperature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrzenie wody.
+        /// </summary>
+        internal static string strBoilingWater {
+            get {
+                return ResourceManager.GetString("strBoilingWater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zero Farenheita.
+        /// </summary>
+        internal static string strFarenheitZero {
+            get {
+                return ResourceManager.GetString("strFarenheitZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zamarzanie wody.
+        /// </summary>
+        internal static string strFrozenWater {
+            get {
+                return ResourceManager.GetString("strFrozenWater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Temperatura efektywna powierzchni słońca.
+        /// </summary>
+        internal static string strSunTemperature {
+            get {
+                return ResourceManager.GetString("strSunTemperature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Topnienie tytanu.
+        /// </summary>
+        internal static string strTitanMelting {
+            get {
+                return ResourceManager.GetString("strTitanMelting", resourceCulture);
+            }
+        }
     }
 }

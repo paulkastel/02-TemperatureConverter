@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Media;
 using TemperatureConverter.Commands;
 using TemperatureConverter.Models;
 
@@ -18,18 +19,13 @@ namespace TemperatureConverter.ModelViews
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
 
-		//TODO: Napisać że powyżej pewnej temperatury występuje zjawisko: topnienie tytanu, slonca, etc.
-		//TODO: Napisać w msgStatus info o zlych wartosciach
 		//TODO: Kolor graidentu w zależnosci od wpisanej tempertury?
-		//TODO: Walidacja kodu następuje w modelu
-		//TODO: Stringi przenieść do resourców
-		//TODO: Testy jednostkowe funkcji
+
+		private Temperature _temp;
 
 		/// <summary>
 		/// Model instance
 		/// </summary>
-		private Temperature _temp;
-
 		public Temperature Temperature
 		{
 			get { return _temp; }
@@ -39,11 +35,11 @@ namespace TemperatureConverter.ModelViews
 			}
 		}
 
+		private string _messageStatus;
+
 		/// <summary>
 		/// Message displayed in window
 		/// </summary>
-		private string _messageStatus;
-
 		public string MessageStatus
 		{
 			get
@@ -75,24 +71,50 @@ namespace TemperatureConverter.ModelViews
 			CountTempFromFarenheit = new Command(ChangeTemperatureF, isFarenheitOK);
 		}
 
+		/// <summary>
+		/// Change Kelvin temperature and change message status
+		/// </summary>
+		/// <param name="temp">Content from textbox</param>
 		public void ChangeTemperatureK(object temp)
 		{
-			MessageStatus = "Przeliczyles Kelvina";
 			_temp.ChangeTemperatureFromKelvin(double.Parse(temp.ToString(), System.Globalization.NumberStyles.Number, System.Globalization.CultureInfo.InvariantCulture));
+			if(_temp.WhatPhenomenon(_temp.Kelvin) != string.Empty)
+				MessageStatus = _temp.WhatPhenomenon(_temp.Kelvin);
+			else
+				MessageStatus = Properties.Resources.infoKelvinCounted;
 		}
 
+		/// <summary>
+		/// Change Celsius temperature and change message status
+		/// </summary>
+		/// <param name="temp">Content from textbox</param>
 		public void ChangeTemperatureC(object temp)
 		{
-			MessageStatus = "Przeliczyles Celsiusa";
 			_temp.ChangeTemperatureFromCelsius(double.Parse(temp.ToString(), System.Globalization.NumberStyles.Number, System.Globalization.CultureInfo.InvariantCulture));
+			if(_temp.WhatPhenomenon(_temp.Kelvin) != string.Empty)
+				MessageStatus = _temp.WhatPhenomenon(_temp.Kelvin);
+			else
+				MessageStatus = Properties.Resources.infoCelsiusCounted;
 		}
 
+		/// <summary>
+		/// Change Farenheit temperatue and change message status
+		/// </summary>
+		/// <param name="temp">Content from textbox</param>
 		public void ChangeTemperatureF(object temp)
 		{
-			MessageStatus = "Obliczyles Farenheita";
 			_temp.ChangeTemperatureFromFarenheit(double.Parse(temp.ToString(), System.Globalization.NumberStyles.Number, System.Globalization.CultureInfo.InvariantCulture));
+			if(_temp.WhatPhenomenon(_temp.Kelvin) != string.Empty)
+				MessageStatus = _temp.WhatPhenomenon(_temp.Kelvin);
+			else
+				MessageStatus = Properties.Resources.infoFarenheitCounted;
 		}
 
+		/// <summary>
+		/// Checks whether user can change Kelvin temperature
+		/// </summary>
+		/// <param name="parameter">content from textbox</param>
+		/// <returns>true if Command can be executed</returns>
 		public bool isKelvinOK(object parameter)
 		{
 			if(parameter == null)
@@ -103,19 +125,21 @@ namespace TemperatureConverter.ModelViews
 			{
 				if(parsed < 0)
 				{
-					MessageStatus = "Przekroczono zero bezględne w Kelvinach";
+					MessageStatus = Properties.Resources.errAbsoluteZero;
 					return false;
 				}
 				else
 					return true;
 			}
 			else
-			{
-				MessageStatus = "Nie możesz przeliczyć podanej wartości!";
 				return false;
-			}
 		}
 
+		/// <summary>
+		/// Chcecks whether user can change Celsius temperature
+		/// </summary>
+		/// <param name="parameter">content from textbox</param>
+		/// <returns>true if Command can be executed</returns>
 		public bool isCelsiusOK(object parameter)
 		{
 			if(parameter == null)
@@ -126,19 +150,21 @@ namespace TemperatureConverter.ModelViews
 			{
 				if(parsed < -273.15)
 				{
-					MessageStatus = "Przekroczono zero bezwzględne w Celsiuszach";
+					MessageStatus = Properties.Resources.errAbsoluteZero;
 					return false;
 				}
 				else
 					return true;
 			}
 			else
-			{
-				MessageStatus = "Nie możesz przeliczyć podanej wartości!";
 				return false;
-			}
 		}
 
+		/// <summary>
+		/// Checks whether user can change Farenheit temperature
+		/// </summary>
+		/// <param name="parameter">content from textbox</param>
+		/// <returns>true if Command can be executed</returns>
 		public bool isFarenheitOK(object parameter)
 		{
 			if(parameter == null)
@@ -149,17 +175,14 @@ namespace TemperatureConverter.ModelViews
 			{
 				if(parsed < -459.67)
 				{
-					MessageStatus = "Przekroczono zero bezwględne w Farenheitach!";
+					MessageStatus = Properties.Resources.errAbsoluteZero;
 					return false;
 				}
 				else
 					return true;
 			}
 			else
-			{
-				MessageStatus = "Nie możesz przeliczyć podanej wartości!";
 				return false;
-			}
 		}
 	}
 }
