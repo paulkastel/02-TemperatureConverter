@@ -7,10 +7,10 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("02-TemperatureConverter")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("TemperatureConverter")]
+[assembly: AssemblyDescription("Application to converting temperatures")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("DCT VISUAL STUDIO")]
 [assembly: AssemblyProduct("02-TemperatureConverter")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]

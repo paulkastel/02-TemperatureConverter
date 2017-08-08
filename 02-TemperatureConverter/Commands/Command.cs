@@ -14,7 +14,10 @@ namespace TemperatureConverter.Commands
 
       public Command(Action<object> execute, Predicate<object> canExecute)
       {
-         _canExecute = canExecute;
+			if(execute == null)
+				throw new NullReferenceException("execute");
+
+			_canExecute = canExecute;
          _executeMethod = execute;
       }
 

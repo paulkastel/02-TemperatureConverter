@@ -8,10 +8,15 @@ using System.Windows;
 
 namespace TemperatureConverter
 {
-   /// <summary>
-   /// Interaction logic for App.xaml
-   /// </summary>
-   public partial class App : Application
-   {
-   }
+	/// <summary>
+	/// Interaction logic for App.xaml
+	/// </summary>
+	public partial class App : Application
+	{
+		public App()
+		{
+			//In .NET >4.5 it isn't possible to enter dot or semicolon to textBox. This make it possible.
+			FrameworkCompatibilityPreferences.KeepTextBoxDisplaySynchronizedWithTextProperty = false;
+		}
+	}
 }
